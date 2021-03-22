@@ -35,7 +35,7 @@ namespace Ex1
 
         private static void ChooseOperation()
         {
-            WriteLine("Система пользователей. Выберете действие:\n 1. Регистрация\n 2. Авторизация. \n 3. Выход");
+            WriteLine("Система пользователей. Выберете действие:\n 1. Регистрация.\n 2. Авторизация. \n 3. Выход.");
             var selectedOperation = ReadLine();
 
             switch (selectedOperation)
@@ -48,8 +48,8 @@ namespace Ex1
         }
         private static void AdminChooseOperation()
         {
-            WriteLine("Система пользователей. Выберете действие:\n 1. Регистрация\n " +
-                      "2. Авторизация.\n 3. Удаление пользователя.\n 4. Редактирование пользователя. \n 5. Выход");
+            WriteLine("Система пользователей. Выберете действие:\n 1. Регистрация.\n " +
+                      "2. Авторизация.\n 3. Удаление пользователя.\n 4. Редактирование пользователя. \n 5. Выход.");
             var selectedOperation = ReadLine();
 
             switch (selectedOperation)
