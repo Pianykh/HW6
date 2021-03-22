@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 /*
 * 3.Создать телефонную книгу, в которую пользователь может добавлять контакты, 
@@ -11,11 +12,14 @@ using System.Collections.Generic;
 
 namespace Ex3
 {
-    internal class Program
+    internal static class Program
     {
         private static Dictionary<string, string> _contactBook = new Dictionary<string, string>();
         static void Main()
         {
+            Console.InputEncoding = Encoding.Unicode;
+            Console.OutputEncoding = Encoding.Unicode;
+
             while (true)
                 ChooseOperation();
         }
@@ -23,7 +27,7 @@ namespace Ex3
         private static void ChooseOperation()
         {
             Console.WriteLine("Телефонная книга.\n Выберете действие:\n 1. Добавить контакт\n " +
-                "2. Обновить контакт\n 3. Отобразить контакт\n 4. Отобразить все контакты");
+                "2. Обновить контакт\n 3. Отобразить контакт\n 4. Отобразить все контакты\n 5. Удалить контакт");
             var selectedOperation = Console.ReadLine();
             switch (selectedOperation)
             {
@@ -31,8 +35,24 @@ namespace Ex3
                 case "2": EditContact(); break;
                 case "3": ShowOneContact(); break;
                 case "4": ShowAllContacts(); break;
+                case "5": DeleteContact(); break;
                 default: throw new ArgumentException($"Недопустимая операция {selectedOperation}");
             }
+        }
+
+        private static void DeleteContact()
+        {
+            Console.WriteLine("Введите имя:");
+            var name = Console.ReadLine();
+            
+            if (_contactBook.ContainsKey(name))
+            {
+                _contactBook.Remove(name);
+                Console.WriteLine($"Контакт {name} удален");
+            }
+            else 
+                Console.WriteLine("Нет контакта с таким именем");
+
         }
 
         private static void ShowAllContacts()
@@ -80,7 +100,7 @@ namespace Ex3
             Console.WriteLine(_contactBook.TryAdd(name, phone)
                 ? $"Контакт {name} успешно записан в книгу"
                 : $"Контакт {name} уже записан в книгу");
-            
+
         }
     }
 }

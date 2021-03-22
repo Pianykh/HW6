@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Text;
 using System.Threading;
 /*
 * 2.Организовать очередь на прием к доктору с помощью Queue, чтобы пациент проводил у доктора от 5 до 15 секунд рандомно. 
@@ -8,13 +9,17 @@ using System.Threading;
 
 namespace Ex2
 {
-    internal class Program
+    internal static class Program
     {
         static void Main()
         {
+            Console.InputEncoding = Encoding.Unicode;
+            Console.OutputEncoding = Encoding.Unicode;
+
             var random = new Random();
             var queue = new Queue();
             var patientsNames = new[] { "Вергилий", "Аристотель", "Платон", "Сократ", "Демокрит", "Архимед" };
+            
             foreach (var name in patientsNames)
                 queue.Enqueue(name);
             while(queue.Count > 0)
